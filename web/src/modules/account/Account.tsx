@@ -4,6 +4,7 @@ import { MeQuery } from "../../schemaTypes";
 import { Redirect } from "react-router-dom";
 import SubscribeUser from "./SubscribeUser";
 import { meQuery } from "../../graphql/queries/me";
+import ChangeCreditCard from "./ChangeCreditCard";
 
 export class Account extends React.PureComponent {
   render() {
@@ -25,7 +26,12 @@ export class Account extends React.PureComponent {
             return <SubscribeUser />;
           }
 
-          return <div>thanks for buying our product</div>;
+          return (
+            <div>
+              <div>your 4 last digits: {data.me.ccLast4}</div>
+              <ChangeCreditCard />
+            </div>
+          );
         }}
       </Query>
     );
