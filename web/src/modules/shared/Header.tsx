@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 import { meQuery } from "../../graphql/queries/me";
 import { MeQuery } from "../../schemaTypes";
+import { HeaderButton } from "../../ui/HeaderButton";
 
 export class Header extends React.PureComponent {
   render() {
@@ -11,17 +12,18 @@ export class Header extends React.PureComponent {
         style={{
           height: 50,
           width: "100%",
-          backgroundColor: "#fafafa",
+          backgroundColor: "rgb(255, 254, 252)",
           display: "flex",
           justifyContent: "space-around",
-          padding: 10
+          padding: 10,
+          alignItems: "center"
         }}
       >
         <Link to="/">
-          <h2>Stripe Example</h2>
+          <HeaderButton style={{ fontSize: 24 }}>Stripe Example</HeaderButton>
         </Link>
 
-        <Query<MeQuery>  query={meQuery}>
+        <Query<MeQuery> query={meQuery}>
           {({ data, loading }) => {
             if (loading || !data) {
               return null;
@@ -30,12 +32,12 @@ export class Header extends React.PureComponent {
             if (!data.me) {
               return (
                 <div>
-                  <div>
-                    <Link to="/login">Login</Link>
-                  </div>
-                  <div>
-                    <Link to="/register">Register</Link>
-                  </div>
+                  <Link to="/login">
+                    <HeaderButton>Login</HeaderButton>
+                  </Link>
+                  <Link to="/register">
+                    <HeaderButton>Register</HeaderButton>
+                  </Link>
                 </div>
               );
             }

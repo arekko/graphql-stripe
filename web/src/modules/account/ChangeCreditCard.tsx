@@ -25,6 +25,7 @@ export default class ChangeCreditCard extends React.PureComponent {
       >
         {mutate => (
           <StripeCheckout
+            panelLabel="Change Credit Card"
             token={async token => {
               const response = await mutate({
                 variables: { source: token.id, ccLast4: token.card.last4 }
@@ -32,7 +33,9 @@ export default class ChangeCreditCard extends React.PureComponent {
               console.log(response);
             }}
             stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE!}
-          />
+          >
+            <button>Change card</button>
+          </StripeCheckout>
         )}
       </Mutation>
     );
