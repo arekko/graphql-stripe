@@ -4,6 +4,7 @@
   "description": "Awesome project developed with TypeORM.",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.4",
     "@types/express": "^4.16.0",
     "@types/express-session": "^1.15.11",
     "@types/graphql": "^14.0.4",
@@ -26,6 +27,7 @@
     "typeorm": "0.2.11"
   },
   "scripts": {
-    "start": "nodemon --exec ts-node src/index.ts"
+    "start": "nodemon --exec ts-node src/index.ts",
+    "build": "tsc -b"
   }
 }
